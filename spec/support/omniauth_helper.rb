@@ -14,6 +14,9 @@ module OmniAuthHelper
         token: "abcdefg12345",
         refresh_token: "12345abcdefg",
         expires_at: DateTime.now
+      },
+      extra: {
+        name: "Joe"
       }
       })
   end
