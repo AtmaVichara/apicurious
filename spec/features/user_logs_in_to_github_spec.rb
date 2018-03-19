@@ -6,9 +6,7 @@ describe "As a visitor" do
       stub_omniauth
       visit root_path
 
-      expect(page).to have_link("Login to Github")
-
-      click_on "Login to Github"
+      click_on "Login to GitHub"
 
       expect(page).to have_content("AtmaVichara")
     end
