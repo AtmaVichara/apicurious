@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  get "/auth/github/callback", to: "sessions#create"
+  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/github", as: :login
 
-
+  resources :profile, only: [:index]
 end
