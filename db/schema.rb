@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180319210335) do
+ActiveRecord::Schema.define(version: 20180320160850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "repos", force: :cascade do |t|
+    t.string "name"
+    t.string "full_name"
+    t.string "owner"
+    t.string "private"
+    t.string "fork"
+    t.string "html_url"
+    t.string "size"
+    t.string "language"
+    t.string "forks"
+    t.string "open_issues"
+    t.string "watchers"
+    t.string "default_branch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -25,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180319210335) do
     t.string "oauth_secret_token"
     t.string "nickname"
     t.string "image"
+    t.string "repos"
+    t.string "bio"
   end
 
 end
