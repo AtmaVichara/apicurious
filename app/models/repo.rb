@@ -1,5 +1,17 @@
 class Repo < ApplicationRecord
 
+  attr_reader :name,
+              :fork,
+              :language,
+              :forks,
+              :default_branch,
+              :watchers,
+              :open_issues,
+              :html_url,
+              :owner,
+              :full_name
+              
+
   def initialize(repos = {})
     @name           = repos[:name]
     @full_name      = repos[:full_name]

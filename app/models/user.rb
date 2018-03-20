@@ -1,13 +1,18 @@
 class User < ApplicationRecord
 
   def self.from_omniauth(auth_info)
-    where(uid: auth_info[:uid]).first_or_create do |new_user|
-      new_user.uid                  = auth_info.uid
-      new_user.username             = auth_info.info.name
-      new_user.oauth_token          = auth_info.credentials.token
-      new_user.oauth_secret_token   = auth_info.credentials.secret
-      new_user.nickname             = auth_info.info.nickname
-      new_user.image                = auth_info.info.image
-    end
+    user = User.find_by(uid: auth_info[:uid]) || User.new
+    user.attributes = {
+      uid: auth_info[:uid],
+      username: auth_info[:info][:name],
+      oauth_token: auth_info[:credentials][:token],
+      oauth_secret_token: auth_info[:credentials][:secret],
+      nickname: auth_info[:info][:nickname],
+      image: auth_info[:info][:image],
+      bio: auth_info[:extra][:raw_info][:bio],
+      repos: auth_info[:extra][:raw_info][:public_repos]
+    }
+    user.save!
+    user
   end
 end
