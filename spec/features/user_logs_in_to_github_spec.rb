@@ -8,7 +8,6 @@ describe "As a visitor" do
 
       click_on "Login to GitHub"
       user = User.first
-      binding.pry
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       expect(page).to have_content("AtmaVichara")

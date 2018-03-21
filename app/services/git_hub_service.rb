@@ -20,14 +20,6 @@ class GitHubService
     end
   end
 
-  def follower
-    response = @conn.get("/users/#{@user.nickname}/followers")
-    followers = JSON.parse(response.body, :symbolize_names => true)
-    followers.map do |repo|
-      Follower.new(repo)
-    end
-  end
-
   private
 
     # def generate_repos(repo_count)
