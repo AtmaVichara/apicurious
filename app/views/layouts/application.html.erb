@@ -9,11 +9,7 @@
   </head>
 
   <body>
-    <div class="navbar navbar-inverse flex-row">
-      <div class="logo">
-        <%= link_to image_tag('github-logo.png'), dashboard_index_path %>
-      </div>
-    </div>
+    <%= render partial: 'layouts/navbar' %>
     <%= yield %>
   </body>
 </html>
