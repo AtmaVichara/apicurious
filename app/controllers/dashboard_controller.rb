@@ -1,8 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    @user = current_user
-    @repos = GitHubService.new(current_user).repo
+    @user = GithubPresenter.new(current_user)
   end
 
 end
