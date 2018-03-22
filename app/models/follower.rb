@@ -1,11 +1,9 @@
 class Follower
 
-  def initialize(follower_info)
-    @name = follower_info[:login]
-  end
+  attr_reader :username
 
-  def self.find_all_followers
-    
+  def initialize(follower_info)
+    @username = follower_info[:login]
   end
 
 end
