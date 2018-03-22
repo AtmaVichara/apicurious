@@ -16,4 +16,8 @@ class GithubPresenter
     GitHubService.new(@user).followers
   end
 
+  def starred_repos
+    GitHubService.new(@user).starred_repos
+  end
+
 end

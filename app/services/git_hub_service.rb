@@ -30,6 +30,13 @@ class GitHubService
     GithubUser.new(response)
   end
 
+  def starred_repos
+    response = get_url("/users/#{@user.nickname}/starred")
+    response.map do |starred|
+      StarredRepos.new(starred)
+    end
+  end
+
   private
 
     attr_reader :user
@@ -41,7 +48,7 @@ class GitHubService
 
     def headers
       {
-        "access_token" => user.oauth_token
+        "authorization" => "token " + user.oauth_token
       }
     end
 
