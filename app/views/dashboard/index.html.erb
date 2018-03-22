@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-3 user-info">
-    <%= image_tag @user.github_user.image, class: 'img-responsive' %>
+    <%= image_tag @user.github_user.image %>
     <h1 class="user-names">
       <span class="d-block name">
         <%= @user.github_user.name %>
@@ -18,10 +18,24 @@
       <div class="user-nav-body">
         <%= link_to 'Overview', dashboard_index_path %>
         <a href="/dashboard">Repositories <span class="repo-count"><%= @user.github_user.repo_count %></span></a>
-        <a href="/dashboard">Stars</a>
+        <a href="/dashboard">Stars <span class="starred-count"><%= @user.starred_repos.count %></span></a>
         <a href="/dashboard">Followers <span class="follower-count"><%= @user.github_user.follower_count %></span></a>
         <a href="/dashboard">Following <span class="following-count"><%= @user.github_user.following %></span></a>
       </div>
+    </div>
+
+    <div class="pinned-repos">
+      <div class="pinned-repos-header">
+        <a href="#" class="customize-heading">Customize Pinned Repositories</a>
+        <h2>Pinned repositories</h2>
+      </div>
+      <div class="pinned-repos-order">
+
+      </div>
+    </div>
+
+    <div class="user-activity">
+      <h2 class="user-activity-heading">Contribution activity</h2>
     </div>
   </div>
 
