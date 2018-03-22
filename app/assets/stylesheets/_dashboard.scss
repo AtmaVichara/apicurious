@@ -1,9 +1,16 @@
 .container {
 
+  h2 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
   .user-info {
     padding: 2.0em;
 
     img {
+      width: 230px;
+      height: 230px;
       border-radius: 6px;
     }
 
@@ -29,19 +36,56 @@
   }
 
   .user-profile {
+
     padding: 2.0em;
+
     .user-nav-body {
+      
       text-decoration: none;
+      border-bottom: solid 1px #d1d5da;
+      box-sizing: border-box;
+
+      a {
+        padding: 16px 8px;
+        margin-right: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #586069;
+        text-align: center;
+      }
+
       span {
+        color: #586069;
+        background-color: rgba(27,31,35,0.08);
         display: inline-block;
         padding: 2px 5px;
         font-size: 12px;
         line-height: 1;
-        color: #586069;
-        background-color: rgba(27,31,35,0.08);
         border-radius: 20px;
       }
     }
 
+    .pinned-repos {
+
+      margin-top: 24px;
+
+      .pinned-repos-header {
+
+        a.customize-heading {
+          font-size: 13px;
+          font-weight: normal;
+          float: right;
+          text-decoration: none;
+          margin-top: 4px;
+          color: #586069;
+        }
+      }
+    }
+  }
+
+  .user-activity {
+    h2.user-activity-heading {
+      margin-bottom: 8px;
+    }
   }
 }
