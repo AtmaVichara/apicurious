@@ -12,7 +12,7 @@ module OmniAuthHelper
             image: "something.png"
           },
           credentials: {
-            token: "abcdefg12345",
+            token: ENV["ACCESS_TOKEN"],
             secret: "12345abcdefg",
             expires_at: DateTime.now
           },

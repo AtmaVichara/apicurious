@@ -1,1 +1,70 @@
-<%= @user.username %>
+<div class="container">
+  <div class="col-md-3 user-info">
+    <%= image_tag @user.github_user.image %>
+    <h1 class="user-names">
+      <span class="d-block name">
+        <%= @user.github_user.name %>
+      </span>
+      <span class="d-block username">
+        <%= @user.github_user.username %>
+      </span>
+    </h1>
+    <div class="bio">
+      <%= @user.github_user.bio %>
+    </div>
+  </div>
+  <div class="col-md-9 user-profile">
+    <div class="user-profile-nav">
+      <div class="user-nav-body">
+        <%= link_to 'Overview', dashboard_index_path %>
+        <a href="/dashboard">Repositories <span class="repo-count"><%= @user.github_user.repo_count %></span></a>
+        <a href="/dashboard">Stars <span class="starred-count"><%= @user.starred_repos.count %></span></a>
+        <a href="/dashboard">Followers <span class="follower-count"><%= @user.github_user.follower_count %></span></a>
+        <a href="/dashboard">Following <span class="following-count"><%= @user.github_user.following %></span></a>
+      </div>
+    </div>
+
+    <div class="pinned-repos">
+      <div class="pinned-repos-header">
+        <a href="#" class="customize-heading">Customize Pinned Repositories</a>
+        <h2>Pinned repositories</h2>
+      </div>
+      <div class="pinned-repos-order">
+        <ul>
+          <% @user.repos.each do |repo| %>
+          <li class="repo"><strong><%= repo.name %></strong> : <%= repo.full_name %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="user-activity">
+      <h2 class="user-activity-heading">Contribution activity</h2>
+      <ul>
+        <% @user.user_activity.each do |activity| %>
+          <p class="event"><strong><%= activity.type %>: <em><%= activity.repo_name %></em></strong></p>
+          <% if activity.type == "PushEvent" %>
+            <% activity.commits_msg.each do |msg| %>
+              <li class="commits">Commit Message <%= msg %> </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="follower-activity">
+      <h2 class=follower-activity-header>Follower activity</h2>
+      <ul>
+        <% @user.followers_activity.each do |activity| %>
+          <p class="follower-event"><strong><%= activity.type %>: <em><%= activity.repo_name %></em></strong></p>
+          <% if activity.type == "PushEvent" %>
+            <% activity.commits_msg.each do |msg| %>
+              <li class="commits">Commit Message <%= msg %> </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+</div>

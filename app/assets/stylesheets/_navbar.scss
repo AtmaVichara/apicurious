@@ -13,7 +13,13 @@ nav.navbar {
     max-width: 4.0em;
     max-height: 4.0em;
   }
+  ul {
+    list-style-type: none;
+  }
 
+}
 
-
+.header-elements {
+  display: flex;
+  justify-content: space-between;
 }

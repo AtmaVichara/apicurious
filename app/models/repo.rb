@@ -10,7 +10,7 @@ class Repo < ApplicationRecord
               :html_url,
               :owner,
               :full_name
-              
+
 
   def initialize(repos = {})
     @name           = repos[:name]
