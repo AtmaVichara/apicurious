@@ -5,7 +5,11 @@ class GithubUser
               :follower_count,
               :name,
               :email,
-              :bio
+              :bio,
+              :repo_count,
+              :following,
+              :gist_count,
+              :location
 
   def initialize(user)
     @username       = user[:login]
@@ -15,7 +19,9 @@ class GithubUser
     @email          = user[:email]
     @bio            = user[:bio]
     @location       = user[:location]
-    @repo_count     = user[:public_repositories]
+    @repo_count     = user[:public_repos]
+    @gist_count     = user[:public_gists]
+    @following      = user[:following]
   end
 
 end
