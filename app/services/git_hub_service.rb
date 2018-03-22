@@ -2,6 +2,7 @@ class GitHubService
 
   def initialize(user)
     @user  = user
+    @date  = (Date.today - 14).strftime('%Y-%m-%d')
   end
 
   def repos
@@ -13,7 +14,7 @@ class GitHubService
 
   def followers
     response = get_url("/users/#{@user.nickname}/followers")
-    resposne.map do |follower|
+    response.map do |follower|
       Follower.new(follower)
     end
   end
@@ -37,6 +38,19 @@ class GitHubService
     end
   end
 
+  def followers_activity
+    get_followers_activity_json.map do |activity|
+      FollowerActivity.new(activity)
+    end
+  end
+
+  def user_activity
+    activity = get_url("/users/#{@user.nickname}/events")
+    activity.map do |act|
+      UserActivity.new(act)
+    end
+  end
+
   private
 
     attr_reader :user
@@ -56,6 +70,16 @@ class GitHubService
       Faraday.new(url: "https://api.github.com", headers: headers)
     end
 
+    def get_followers_activity
+      followers.map do |follower|
+        JSON.parse(get_activity(follower), symbolize_names: true)[:items]
+      end.reject(&:empty?)
+    end
 
+    def get_followers_activity_json
+      followers.map do |follower|
+        get_url("/users/#{follower.username}/events")
+      end.flatten
+    end
 
 end
