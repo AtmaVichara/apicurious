@@ -1,0 +1,47 @@
+.container {
+
+  .user-info {
+    padding: 2.0em;
+
+    img {
+      border-radius: 6px;
+    }
+
+    .user-names {
+      .name {
+        font-size: 26px;
+        line-height: 30px;
+      }
+      .d-block {
+        display: block;
+      }
+      .username {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 300;
+      }
+    }
+
+    .bio {
+      font-size: 14px;
+      color: #6a737d;
+    }
+  }
+
+  .user-profile {
+    padding: 2.0em;
+    .user-nav-body {
+      text-decoration: none;
+      span {
+        display: inline-block;
+        padding: 2px 5px;
+        font-size: 12px;
+        line-height: 1;
+        color: #586069;
+        background-color: rgba(27,31,35,0.08);
+        border-radius: 20px;
+      }
+    }
+
+  }
+}
