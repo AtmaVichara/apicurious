@@ -30,12 +30,40 @@
         <h2>Pinned repositories</h2>
       </div>
       <div class="pinned-repos-order">
-
+        <ul>
+          <% @user.repos.each do |repo| %>
+          <li class="repo"><strong><%= repo.name %></strong> : <%= repo.full_name %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
 
     <div class="user-activity">
       <h2 class="user-activity-heading">Contribution activity</h2>
+      <ul>
+        <% @user.user_activity.each do |activity| %>
+          <p class="event"><strong><%= activity.type %>: <em><%= activity.repo_name %></em></strong></p>
+          <% if activity.type == "PushEvent" %>
+            <% activity.commits_msg.each do |msg| %>
+              <li class="commits">Commit Message <%= msg %> </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="follower-activity">
+      <h2 class=follower-activity-header>Follower activity</h2>
+      <ul>
+        <% @user.followers_activity.each do |activity| %>
+          <p class="follower-event"><strong><%= activity.type %>: <em><%= activity.repo_name %></em></strong></p>
+          <% if activity.type == "PushEvent" %>
+            <% activity.commits_msg.each do |msg| %>
+              <li class="commits">Commit Message <%= msg %> </li>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 
